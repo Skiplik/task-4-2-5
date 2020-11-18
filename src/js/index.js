@@ -82,13 +82,19 @@ function createRepository({ name, owner, stars }) {
     const info = document.createElement('div');
     info.classList.add('repositories__info');
 
-    // возможно предыдущий вариант с переменными более читабельный и правельный (этот короче)
-    info.insertAdjacentHTML(
-        'afterbegin',
-        `<p class="repositories__text">Name: ${ name }</p>
-        <p class="repositories__text">Owner: ${ owner }</p>
-        <p class="repositories__text">Stars: ${ stars }</p>`
-    );
+    const repositoryName = document.createElement('p');
+    repositoryName.classList.add('repositories__text');
+    repositoryName.textContent = `Name: ${ name }`;
+
+    const repositoryOwner = document.createElement('p');
+    repositoryOwner.classList.add('repositories__text');
+    repositoryOwner.textContent = `Owner: ${ owner }`;
+
+    const repositoryStars = document.createElement('p');
+    repositoryStars.classList.add('repositories__text');
+    repositoryStars.textContent = `Stars: ${ stars }`;
+
+    info.append(repositoryName, repositoryOwner, repositoryStars);
 
     const btn = document.createElement('button');
     btn.classList.add('btn-remove');
